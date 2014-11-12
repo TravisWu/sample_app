@@ -1,6 +1,8 @@
 package com.traviswu.clutch;
 
 import android.app.Activity;
+import android.content.Context;
+import android.content.res.Resources;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
@@ -9,8 +11,10 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.BaseAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.GridView;
 import android.widget.ListView;
 import android.widget.TabHost;
 import android.widget.TextView;
@@ -25,17 +29,17 @@ public class Main extends Activity {
     EditText editName, editNumber, editEmail;
     List<Contact>Contacts = new ArrayList<Contact>();
     ListView contactListView;
-
+    GridView myGrid;
     @Override
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        myGrid= (GridView) findViewById(R.id.gridView);
         setContentView(R.layout.activity_main);
 
         editName = (EditText) findViewById(R.id.editName);
         editNumber= (EditText) findViewById(R.id.editNumber);
         editEmail=(EditText) findViewById(R.id.editEmail);
-        contactListView = (ListView) findViewById(R.id.listView);
         TabHost tabHost = (TabHost) findViewById(R.id.tabHost);
         tabHost.setup();
 
@@ -113,6 +117,49 @@ public class Main extends Activity {
 
         }
     }
+    class SingleName{
+        int imageid;
+        String personName;
+        SingleName(int imageid,String personName){
+            this.imageid=imageid;
+            this.personName= personName;
+        }
+
+    }
+    class theAdapter extends BaseAdapter
+    {
+        ArrayList<SingleName> list;
+        theAdapter(Context context){
+            list = new ArrayList<SingleName>();
+            Resources res=context.getResources();
+            String[] tempContactName=res.getStringArray(R.array.Contact_Names);
+            int[] contactImage= {R.drawable.ahsen, R.drawable.andrei,R.drawable.edson, R.drawable.jake,R.drawable.jen, R.drawable.justin,R.drawable.niles, R.drawable.sylvester, R.drawable.travis};
+            for(int i=0; i<10; i++){
+                SingleName tempName = new SingleName(contactImage[i], tempContactName[i]);
+                list.add(tempName);
+            }
+        }
+        @Override
+        public int getCount() {
+            return 0;
+        }
+
+        @Override
+        public Object getItem(int i) {
+            return null;
+        }
+
+        @Override
+        public long getItemId(int i) {
+            return 0;
+        }
+
+        @Override
+        public View getView(int position, View convertView, ViewGroup parent) {
+            return null;
+        }
+    }
+
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
 
