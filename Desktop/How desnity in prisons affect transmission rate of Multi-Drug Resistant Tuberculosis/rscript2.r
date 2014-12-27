@@ -69,8 +69,8 @@ SIRfunc_with_demographics=function(t, x, vparameters){
 ##################################################################################
 SIRfunc_with_vaccination=function(t, x, vparameters){
   S    = x[1]  # the value of S at time t
-  I    = x[2]  # the value of I at time t
-  R    = x[3]  # the value of R at time t
+  I_W    = x[2]  # the value of I at time t
+  I_R    = x[3]  # the value of R at time t
   Rvac = x[4]  # the value of Rvac at time t
   
   if (S<0) S=0 # this is a cross check to ensure that we always have sensical values of S

@@ -1,7 +1,7 @@
 def betar():
     yr =0.000003
-    N =112
-    K = 98   
+    N =110
+    K = 112   
     br = 0.00002
     Br = yr * (N-K)+br
 
@@ -9,8 +9,8 @@ def betar():
     
 def betaw():
     yw =0.000002    
-    N =112
-    K = 98
+    N =110
+    K = 112
     bw = 0.00003    
      
     Bw = yw * (N-K)+bw
@@ -30,9 +30,8 @@ def main():
     d = 0.00003
     z = 0.00005
     f = 2
-    u = 0.5 
-    K = 98
-    N =112
+    u = 0.00005 
+ 
 
     Br = betar()
     Bw = betaw()
@@ -42,7 +41,9 @@ def main():
     DIrDt = Bw*S*Ir - c*Ir + u*Iw - z*Ir - D*Ir - (z*Ir)
   
     
-    print "Ds/Dt = ", DsDt
-    print "DI/Dt = ", DiDt
-    print "DIr/Dt= ", DIrDt
+    print "bw = ", Bw
+    print "br= ", Br
+    print "DS/DT" , DsDt
+    print "Di/DT", DiDt
+    print "DIr/Dt", DIrDt
 main()
